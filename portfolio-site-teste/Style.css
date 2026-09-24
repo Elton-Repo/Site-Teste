@@ -1,0 +1,591 @@
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+   :root {
+    --cor-fundo: #fffaf7;
+    --cor-fundo-alternativo: #f5f0fa;
+    --cor-superficie: #ffffff;
+    --cor-texto: #30303a;
+    --cor-texto-suave: #656574;
+
+    --cor-primaria: #9b8ac4;
+    --cor-primaria-escura: #75649f;
+    --cor-secundaria: #e7b8b8;
+    --cor-destaque: #b8d8d8;
+    --cor-amarela: #f2dfb3;
+
+    --cor-borda: #e5dfe5;
+
+    --sombra: 0 12px 30px rgba(75, 65, 90, 0.10);
+
+    --raio: 18px;
+    --largura-conteudo: 1100px;
+}
+
+
+/* =========================================================
+   RESET BÁSICO
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ELEMENTOS GERAIS
+   ========================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+.container {
+    width: min(90%, var(--largura-conteudo));
+    margin-inline: auto;
+}
+
+.section {
+    padding: 90px 0;
+}
+
+.section-alt {
+    background-color: var(--cor-fundo-alternativo);
+}
+
+.section-label,
+.eyebrow {
+    color: var(--cor-primaria-escura);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h2 {
+    margin-top: 8px;
+    margin-bottom: 35px;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background-color: rgba(255, 250, 247, 0.94);
+    border-bottom: 1px solid var(--cor-borda);
+
+    backdrop-filter: blur(10px);
+}
+
+.site-header .container {
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.logo {
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--cor-primaria-escura);
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    list-style: none;
+}
+
+.menu a {
+    position: relative;
+
+    color: var(--cor-texto);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu a:hover {
+    color: var(--cor-primaria-escura);
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--cor-primaria);
+
+    transition: width 0.2s ease;
+}
+
+.menu a:hover::after,
+.menu a:focus-visible::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   FOCO DE ACESSIBILIDADE
+   ========================================================= */
+
+a:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+
+/* =========================================================
+   APRESENTAÇÃO / HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(231, 184, 184, 0.45),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(184, 216, 216, 0.45),
+            transparent 25%
+        ),
+        var(--cor-fundo);
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    width: 250px;
+    height: 250px;
+
+    top: 15%;
+    right: 5%;
+
+    background-color: rgba(242, 223, 179, 0.4);
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    transform: rotate(15deg);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    max-width: 800px;
+
+    margin: 12px 0 20px;
+
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    letter-spacing: -0.05em;
+}
+
+.hero-text {
+    max-width: 650px;
+
+    color: var(--cor-texto-suave);
+
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-top: 35px;
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 12px 22px;
+
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+
+    border: 2px solid var(--cor-primaria);
+    border-radius: 999px;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--cor-primaria-escura);
+    border-color: var(--cor-primaria-escura);
+
+    transform: translateY(-2px);
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--cor-primaria-escura);
+}
+
+.button-secondary:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CARTÕES
+   ========================================================= */
+
+.content-card,
+.project-card {
+    background-color: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+.content-card {
+    padding: 28px;
+}
+
+.content-card p + p {
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   GRADES
+   ========================================================= */
+
+.cards,
+.skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   LISTA DE COMPETÊNCIAS
+   ========================================================= */
+
+.skill-list,
+.simple-list {
+    list-style: none;
+}
+
+.skill-list {
+    display: grid;
+    gap: 12px;
+}
+
+.skill-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.skill-list li:last-child {
+    border-bottom: none;
+}
+
+.skill-list li span:last-child {
+    color: var(--cor-primaria-escura);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.simple-list {
+    display: grid;
+    gap: 14px;
+}
+
+.simple-list li {
+    position: relative;
+
+    padding-left: 25px;
+}
+
+.simple-list li::before {
+    content: "✦";
+
+    position: absolute;
+    left: 0;
+
+    color: var(--cor-primaria);
+}
+
+
+/* =========================================================
+   PROJETOS
+   ========================================================= */
+
+.project-card {
+    overflow: hidden;
+}
+
+.project-content {
+    padding: 32px;
+}
+
+.project-content p {
+    color: var(--cor-texto-suave);
+}
+
+.pending {
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 8px 12px;
+
+    background-color: #fff7dc;
+
+    border-radius: 8px;
+
+    color: #75643a !important;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CONTATO
+   ========================================================= */
+
+.section-contact {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(231, 184, 184, 0.25),
+            rgba(184, 216, 216, 0.25)
+        );
+}
+
+.section-contact > .container > p:not(.section-label) {
+    max-width: 650px;
+
+    color: var(--cor-texto-suave);
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.site-footer {
+    padding: 30px 0;
+
+    background-color: #302d38;
+    color: #eeeaf1;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .site-header .container {
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 18px 0;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 18px;
+    }
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    .cards,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        width: min(92%, var(--largura-conteudo));
+    }
+
+    .site-header {
+        position: static;
+    }
+
+    .menu {
+        gap: 10px 14px;
+    }
+
+    .menu a {
+        font-size: 0.88rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 15vw, 4.5rem);
+    }
+
+    .hero-actions,
+    .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .content-card,
+    .project-content {
+        padding: 22px;
+    }
+
+    .skill-list li {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
